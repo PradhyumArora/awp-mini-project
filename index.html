@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="quizApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-controller="QuizController as quizCtrl" ng-init="quizCtrl.startTimer()">
+
+<div class="container">
+  <h1>Exam Rizz Checker</h1>
+  
+  <div class="timer">{{ quizCtrl.timer }}</div>
+  <div class="marks">Marks: {{ quizCtrl.marks }}</div>
+  
+  <div class="question">
+    <p>{{ quizCtrl.currentQuestion.question }}</p>
+    <ul class="options">
+      <li ng-repeat="option in quizCtrl.currentQuestion.options" ng-click="quizCtrl.checkAnswer(option)" ng-class="{ 'correct': quizCtrl.isCorrect && option === quizCtrl.currentQuestion.answer, 'incorrect': !quizCtrl.isCorrect && option === quizCtrl.selectedOption, 'selected': quizCtrl.selectedOption === option }">
+        {{ option }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="result" ng-if="quizCtrl.showResult">
+    <p ng-class="{ 'correct': quizCtrl.isCorrect, 'incorrect': !quizCtrl.isCorrect }">
+      {{ quizCtrl.resultMessage }}
+    </p>
+    <p ng-if="!quizCtrl.isCorrect">Correct Answer: {{ quizCtrl.currentQuestion.answer }}</p>
+  </div>
+
+  <button class="btn btn-primary" ng-click="quizCtrl.nextQuestion()">Next</button>
+</div>
+
+<div id="confetti"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script>
+<script src="confetti.js"></script>
+<script>
+  setTimeout(function() {
+    confetti.stop();
+  }, 5000); // Stop confetti after 5 seconds
+</script>
+</body>
+</html>

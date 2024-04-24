@@ -1,0 +1,74 @@
+body {
+  background: linear-gradient(to bottom right, #4facfe, #00f2fe);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-top: 50px;
+  height: 100vh; /* Ensure full viewport height */
+  margin: 0; /* Remove default margin */
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.timer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.marks {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+}
+
+.options li {
+  margin-bottom: 10px;
+}
+
+.options li:last-child {
+  margin-bottom: 0;
+}
+
+.options li {
+  display: block;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.options li.selected {
+  background-color: #f0f0f0; /* Light gray for selected option */
+}
+
+.options li:hover {
+  background-color: #f0f0f0;
+}
+
+.result p.correct {
+  color: green;
+}
+
+.result p.incorrect {
+  color: red;
+}
